@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		标题：<input type="text"  placeholder="请输入标题" id="inp"/><br />
+		内容：<textarea rows="5" id="tex"></textarea><br /><br />
+		<button id="btn">点我留言</button>
+		<h1 style="color: royalblue">显示内容</h1>
+		<script type="text/javascript">
+			//获取元素
+			var oInp = document.getElementById("inp");
+			var otex = document.getElementById("tex");
+			var oBtn = document.getElementById("btn");
+			var obd = document.getElementsByTagName("body")[0];
+			//添加点击事件
+			oBtn.onclick = function(){
+				//创建元素节点
+				var oDiv = document.createElement("div");
+				//将文本框的内容赋值给这个div
+				oDiv.innerHTML = oInp.value+":"+"<br>"+ otex.value;
+				//添加到末尾
+				obd.appendChild(oDiv);
+				//给div 添加样式
+				oDiv.style.background = "cyan";
+				oDiv.style.width = "300px";
+				oDiv.style.height = "60px";
+				oDiv.style.marginBottom = "5px";
+				//创建一个删除标签
+				var a = document.createElement("a");
+				a.innerHTML = "删除";
+				a.href = "#";
+				oDiv.appendChild(a);
+				//实现删除功能
+				a.onclick = function(){
+					obd.removeChild(oDiv);
+				}
+				a.style.float = "right";
+				a.style.textDecoration = "none";
+				//清空文本框的值
+				oInp.value = "";
+				otex.value = "";
+				
+				//删除功能
+				/*var alla = document.getElementsByTagName("a");
+				for (var i = 0;i< alla.length;i++) {
+				alla[i].onclick = function(){
+					this.parentNode.remove();
+				}
+			}*/
+		}
+			
+			
+		</script>
+	</body>
+</html>
